@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Grid, GridItem } from '@chakra-ui/react';
 
-import { client, recommendedProfiles } from '../api';
+import SocialProfileWithImage from '../components/SocialProfileWithImage';
+
+import { client, recommendedProfiles } from '../api/profiles';
 
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
@@ -20,26 +23,52 @@ export default function Home() {
     }
   }
 
+  //return (
+  // <div>
+  //   {profiles.map((profile, index) => {
+  //     return (
+  //       <Link href={`profile/${profile.handle}`} key={index}>
+  //         <a>
+  //           <div>
+  //             {profile.picture && profile.picture.original ? (
+  //               <Image src={profile.picture.original.url} width="60px" height="60px" />
+  //             ) : (
+  //               <div style={{ width: '60px', height: '60px', backgroundColor: 'gray' }}></div>
+  //             )}
+  //             <h4>{profile.handle}</h4>
+  //             <p>{profile.bio}</p>
+  //           </div>
+  //         </a>
+  //       </Link>
+  //     );
+  //   })}
+  // </div>
+
   return (
-    <div>
+    <Grid templateColumns="repeat(5, 1fr)" gap={6}>
       {profiles.map((profile, index) => {
-        //return <p>{profile.handle}</p>;
         return (
-          <Link href={`profiles/${profile.handle}`} key={index}>
-            <a>
-              <div>
-                {profile.picture ? (
-                  <Image src={profile.picture.original.url} width="60px" height="60px" />
-                ) : (
-                  <div style={{ width: '60px', height: '60px', backgroundColor: 'gray' }}></div>
-                )}
-                <h4>{profile.handle}</h4>
-                <p>{profile.bio}</p>
-              </div>
-            </a>
+          <Link href={`/profile/${profile.id}`} key={index}>
+            <GridItem w="100%" h="100%">
+              <SocialProfileWithImage
+                imageUrl={
+                  profile.picture && profile.picture.original ? profile.picture.original.url : ''
+                }
+                coverPicture={
+                  profile.coverPicture && profile.coverPicture.original
+                    ? profile.coverPicture.original.url
+                    : ''
+                }
+                name={profile.name}
+                handle={profile.handle}
+                stats={profile.stats}
+              ></SocialProfileWithImage>
+            </GridItem>
           </Link>
         );
       })}
-    </div>
+    </Grid>
   );
 }
+// );
+//}
