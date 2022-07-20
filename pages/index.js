@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Grid, GridItem } from '@chakra-ui/react';
 
-import SocialProfileWithImage from '../components/SocialProfileWithImage';
+import SocialProfileWithImage from '../components/ProfileCard';
 
 import { client, recommendedProfiles } from '../api/profiles';
 

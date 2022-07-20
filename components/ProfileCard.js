@@ -12,7 +12,7 @@ import {
   propNames,
 } from '@chakra-ui/react';
 
-export default function SocialProfileWithImage(props) {
+export default function ProfileCard(props) {
   return (
     <Center py={6}>
       <Box
