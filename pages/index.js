@@ -45,10 +45,10 @@ export default function Home() {
   // </div>
 
   return (
-    <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+    <Grid templateColumns="repeat(4, 1fr)" gap={6} padding={100}>
       {profiles.map((profile, index) => {
         return (
-          <Link href={`/profile/${profile.id}`} key={index}>
+          <Link href={`/profile/${profile.handle}`} key={index}>
             <GridItem w="100%" h="100%">
               <SocialProfileWithImage
                 imageUrl={

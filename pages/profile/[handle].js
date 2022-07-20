@@ -8,6 +8,7 @@ export default function Profile() {
 
   return (
     <div>
+      <h1>Handle</h1>
       <h1>{handle}</h1>
     </div>
   );

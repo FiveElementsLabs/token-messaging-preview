@@ -12,12 +12,11 @@ import {
   propNames,
 } from '@chakra-ui/react';
 
-export default function SocialProfileWithImage(props) {
-  console.log(props);
+export default function SocialComponentWithImage(props) {
   return (
     <Center py={6}>
       <Box
-        maxW={'270px'}
+        maxW={'870px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.800')}
         boxShadow={'2xl'}
@@ -55,13 +54,17 @@ export default function SocialProfileWithImage(props) {
 
           <Stack direction={'row'} justify={'center'} spacing={6}>
             <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>{props.stats.totalFollowing}</Text>
+              <Text fontWeight={600}>
+                {props.stats?.totalFollowing ? props.stats?.totalFollowing : 0}
+              </Text>
               <Text fontSize={'sm'} color={'gray.500'}>
                 Following
               </Text>
             </Stack>
             <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>{props.stats.totalFollowers}</Text>
+              <Text fontWeight={600}>
+                {props.stats?.totalFollowers ? props.stats.totalFollowers : 0}
+              </Text>
               <Text fontSize={'sm'} color={'gray.500'}>
                 Followers
               </Text>
