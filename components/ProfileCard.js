@@ -70,7 +70,7 @@ export default function ProfileCard(props) {
             </Stack>
           </Stack>
 
-          <CustomButton text="Connect"></CustomButton>
+          <CustomButton mt="8" text="Connect"></CustomButton>
         </Box>
       </Box>
     </Center>

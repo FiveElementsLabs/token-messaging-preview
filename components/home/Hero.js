@@ -1,4 +1,15 @@
-import { Flex, Container, Heading, Stack, Text, Button, Icon, IconProps } from '@chakra-ui/react';
+import {
+  Flex,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Button,
+  Icon,
+  IconProps,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import CustomButton from '../CustomButton';
 
 export default function Hero() {
   return (
@@ -25,18 +36,16 @@ export default function Hero() {
           others to connect.
         </Text>
         <Stack spacing={6} direction={'row'}>
-          <Button
-            rounded={'full'}
-            px={6}
-            colorScheme={'orange'}
-            bg={'orange.400'}
-            _hover={{ bg: 'orange.500' }}
-          >
+          {/* <Button rounded={'full'} px={6} _hover={{ bg: 'orange.500' }}>
             Get started
-          </Button>
-          {/* <Button rounded={'full'} px={6}>
-            Learn more
           </Button> */}
+
+          <CustomButton colorScheme="orange" bg="orange.400" text="Get Started"></CustomButton>
+
+          <CustomButton
+            text="Learn More"
+            bg="useColorModeValue('#151f21', 'gray.900')"
+          ></CustomButton>
         </Stack>
       </Stack>
     </Container>

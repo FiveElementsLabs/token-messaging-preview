@@ -4,10 +4,10 @@ export default function CustomButton(props) {
   return (
     <Button
       w={'full'}
-      mt={8}
+      mt={props.mt}
       border="1px"
       borderColor="gray.400"
-      bg={useColorModeValue('#151f21', 'gray.900')}
+      bg={props.bg}
       color={'white'}
       rounded={'md'}
       _hover={{
