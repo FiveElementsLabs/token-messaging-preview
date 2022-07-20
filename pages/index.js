@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Grid, GridItem } from '@chakra-ui/react';
 
-import SocialProfileWithImage from '../components/ProfileCard';
+import ProfileCard from '../components/ProfileCard';
 
 import { client, recommendedProfiles } from '../api/profiles';
 
@@ -50,7 +50,7 @@ export default function Home() {
         return (
           <Link href={`/profile/${profile.handle}`} key={index}>
             <GridItem w="100%" h="100%">
-              <SocialProfileWithImage
+              <ProfileCard
                 imageUrl={
                   profile.picture && profile.picture.original ? profile.picture.original.url : ''
                 }
@@ -62,7 +62,7 @@ export default function Home() {
                 name={profile.name}
                 handle={profile.handle}
                 stats={profile.stats}
-              ></SocialProfileWithImage>
+              ></ProfileCard>
             </GridItem>
           </Link>
         );

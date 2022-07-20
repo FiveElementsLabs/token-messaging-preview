@@ -89,10 +89,8 @@ export const recommendedProfiles = `query RecommendedProfiles {
     }
   }`;
 
-export const getProfileByHandle = `query Profile(
-    $handle: Handle
-) {
-    profile(request: { handle: $handle }) {
+export const getProfileByHandle = (handle) => `query Profile {
+    profile(request: { handle: "${handle}" }) {
       id
       name
       bio

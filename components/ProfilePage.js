@@ -12,10 +12,12 @@ import {
   propNames,
 } from '@chakra-ui/react';
 
-export default function SocialComponentWithImage(props) {
+export default function ProfilePage(props) {
   return (
     <Center py={6}>
       <Box
+        border="1px"
+        borderColor="gray.400"
         maxW={'870px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.800')}
@@ -74,6 +76,8 @@ export default function SocialComponentWithImage(props) {
           <Button
             w={'full'}
             mt={8}
+            border="1px"
+            borderColor="gray.400"
             bg={useColorModeValue('#151f21', 'gray.900')}
             color={'white'}
             rounded={'md'}

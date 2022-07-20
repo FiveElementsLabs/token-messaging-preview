@@ -1,34 +1,34 @@
 import { useState, useEffect } from 'react';
-import { client, getProfile } from '../../api/profiles';
+import { client, getProfileByHandle } from '../../api/profiles';
 //import { getFollowers } from '../../api/followers';
 
 import { useRouter } from 'next/router';
-import SocialComponentWithImage from '../../components/SocialComponentWithImage';
+import ProfilePage from '../../components/ProfilePage';
 
 export default function Profile() {
   const router = useRouter();
-  const { id } = router.query;
+  const { handle } = router.query;
   const [profile, setProfile] = useState({});
   const [followers, setFollowers] = useState([]);
 
   useEffect(() => {
-    if (id) {
+    if (handle) {
       fetchProfile();
     }
   }),
-    [id, profile];
+    [handle, profile];
 
   async function fetchProfile() {
     try {
-      if (id) {
-        console.log('fetchProfile: ' + id);
-        const { data } = await client.query(getProfile(id)).toPromise();
-
-        setProfile(data.profiles.items[0]);
-        console.log(profile);
-        const result = await client.query(getFollowers(id)).toPromise();
-        setFollowers(result.data.followers.items);
-        console.log(followers);
+      if (handle) {
+        console.log('fetchProfile 2: ' + handle);
+        const { data } = await client.query(getProfileByHandle(handle)).toPromise();
+        console.log(data);
+        setProfile(data.profile);
+        console.log('profile: ' + profile);
+        // const result = await client.query(getFollowers(id)).toPromise();
+        // setFollowers(result.data.followers.items);
+        // console.log(followers);
       }
     } catch (error) {
       console.log(error.toString());
@@ -38,7 +38,7 @@ export default function Profile() {
   return (
     <div>
       {profile ? (
-        <SocialComponentWithImage
+        <ProfilePage
           imageUrl={profile.picture && profile.picture.original ? profile.picture.original.url : ''}
           coverPicture={
             profile.coverPicture && profile.coverPicture.original
@@ -48,7 +48,7 @@ export default function Profile() {
           name={profile.name}
           handle={profile.handle}
           stats={profile.stats}
-        ></SocialComponentWithImage>
+        ></ProfilePage>
       ) : (
         <div>Loading...</div>
       )}
