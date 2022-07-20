@@ -11,6 +11,7 @@ import {
   useColorModeValue,
   propNames,
 } from '@chakra-ui/react';
+import CustomButton from './CustomButton';
 
 export default function ProfileCard(props) {
   return (
@@ -69,21 +70,7 @@ export default function ProfileCard(props) {
             </Stack>
           </Stack>
 
-          <Button
-            w={'full'}
-            mt={8}
-            border="1px"
-            borderColor="gray.400"
-            bg={useColorModeValue('#151f21', 'gray.900')}
-            color={'white'}
-            rounded={'md'}
-            _hover={{
-              transform: 'translateY(-2px)',
-              boxShadow: 'lg',
-            }}
-          >
-            Connect
-          </Button>
+          <CustomButton text="Connect"></CustomButton>
         </Box>
       </Box>
     </Center>
